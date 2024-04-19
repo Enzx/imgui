@@ -1,4 +1,4 @@
-project "imgui"
+project "imgui_backends"
 	kind "StaticLib"
 	language "C++"
 	staticruntime "off"
@@ -9,28 +9,23 @@ project "imgui"
 	
 	links
 	{
-	"GLFW"
+	"GLFW",
+	"imgui"
 	}
 	
 	includedirs
 	{
-	"%{wks.location}/vendors/GLFW/include"
-	
+		"%{wks.location}/vendors/GLFW/include",
+		"%{wks.location}/vendors/imgui/",
+		"%{wks.location}/vendors/glad/include/"
 	}
 
 	files
 	{
-		"imconfig.h",
-		"imgui.h",
-		"imgui.cpp",
-		"imgui_draw.cpp",
-		"imgui_internal.h",
-		"imgui_tables.cpp",
-		"imgui_widgets.cpp",
-		"imstb_rectpack.h",
-		"imstb_textedit.h",
-		"imstb_truetype.h",
-		"imgui_demo.cpp",
+		"imgui_impl_glfw.h",
+		"imgui_impl_glfw.cpp",
+		"imgui_impl_opengl3.h",
+		"imgui_impl_opengl3.cpp",
 
 	}
 
@@ -48,3 +43,7 @@ project "imgui"
 	filter "configurations:Release"
 		runtime "Release"
 		optimize "speed"
+		
+		
+		
+		
